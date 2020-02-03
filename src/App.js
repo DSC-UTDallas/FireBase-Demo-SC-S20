@@ -17,14 +17,11 @@ class App  extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('Something was submitted: ' + this.state.value);
-    console.log("Something was submitted: " + this.state.value);
+    var submitted = this.state.value;
     event.preventDefault();
   }
 
   handleLoad(event) {
-    alert('Database:' + this.state.value);
-    console.log('Database:' + this.state.value);
     event.preventDefault();
   }
 
