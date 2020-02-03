@@ -9,6 +9,7 @@ class App  extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleLoad = this.handleLoad.bind(this);
   }
 
   handleChange(event) {
@@ -16,8 +17,14 @@ class App  extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
-    console.log("A name was submitted: " + this.state.value);
+    alert('Something was submitted: ' + this.state.value);
+    console.log("Something was submitted: " + this.state.value);
+    event.preventDefault();
+  }
+
+  handleLoad(event) {
+    alert('Database:' + this.state.value);
+    console.log('Database:' + this.state.value);
     event.preventDefault();
   }
 
@@ -33,7 +40,7 @@ class App  extends React.Component {
             </label>
             <input type="submit" value="Submit" />
           </form>
-          <form >
+          <form onSubmit={this.handleLoad}>
             <input type="submit" value="Load" />
           </form>
           <a
