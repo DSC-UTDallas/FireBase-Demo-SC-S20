@@ -2,7 +2,25 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+const firebaseConfig =
+{
+  apiKey: "AIzaSyAdMgyMjKVE_wxx0RzjfD9yBtwxO-gF4wA",
+  authDomain: "fir-demo-fbc23.firebaseapp.com",
+  databaseURL: "https://fir-demo-fbc23.firebaseio.com",
+  projectId: "fir-demo-fbc23",
+  storageBucket: "fir-demo-fbc23.appspot.com",
+  messagingSenderId: "356105976876",
+  appId: "1:356105976876:web:57112787f63f508ad9a589",
+  measurementId: "G-RD3QLY0LZ7"
+}
+
+const firebase = require("firebase");
+require("firebase/firestore");
+firebase.initializeApp(firebaseConfig);
+var db = firebase.firestore();
+
 class App  extends React.Component {
+  
   constructor(props) {
     super(props);
     this.state = {value: ''};
@@ -17,14 +35,26 @@ class App  extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('Something was submitted: ' + this.state.value);
-    console.log("Something was submitted: " + this.state.value);
+    var submitted = this.state.value;
+    db.collection("data").add({
+      value: submitted
+    })
+    .then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
     event.preventDefault();
   }
 
   handleLoad(event) {
-    alert('Database:' + this.state.value);
-    console.log('Database:' + this.state.value);
+    console.log('Database:');
+    db.collection("data").get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+          console.log(`${doc.id} => ${doc.data().value}`);
+      });
+    });
     event.preventDefault();
   }
 
