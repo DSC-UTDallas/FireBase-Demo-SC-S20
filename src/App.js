@@ -4,14 +4,7 @@ import './App.css';
 
 const firebaseConfig =
 {
-  apiKey: "AIzaSyAdMgyMjKVE_wxx0RzjfD9yBtwxO-gF4wA",
-  authDomain: "fir-demo-fbc23.firebaseapp.com",
-  databaseURL: "https://fir-demo-fbc23.firebaseio.com",
-  projectId: "fir-demo-fbc23",
-  storageBucket: "fir-demo-fbc23.appspot.com",
-  messagingSenderId: "356105976876",
-  appId: "1:356105976876:web:57112787f63f508ad9a589",
-  measurementId: "G-RD3QLY0LZ7"
+  
 }
 
 const firebase = require("firebase");
